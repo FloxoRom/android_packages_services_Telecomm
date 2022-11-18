@@ -395,11 +395,9 @@ public class TelecomServiceImplTest extends TelecomTestCase {
         makeAccountsVisibleToAllUsers(TEL_PA_HANDLE_16, SIP_PA_HANDLE_17);
 
         assertEquals(fullPHList,
-                mTSIBinder.getCallCapablePhoneAccounts(
-                        true, DEFAULT_DIALER_PACKAGE, null).getList());
+                mTSIBinder.getCallCapablePhoneAccounts(true, DEFAULT_DIALER_PACKAGE, null));
         assertEquals(smallPHList,
-                mTSIBinder.getCallCapablePhoneAccounts(
-                        false, DEFAULT_DIALER_PACKAGE, null).getList());
+                mTSIBinder.getCallCapablePhoneAccounts(false, DEFAULT_DIALER_PACKAGE, null));
     }
 
     @SmallTest
@@ -414,7 +412,7 @@ public class TelecomServiceImplTest extends TelecomTestCase {
 
         List<PhoneAccountHandle> result = null;
         try {
-            result = mTSIBinder.getCallCapablePhoneAccounts(true, "", null).getList();
+            result = mTSIBinder.getCallCapablePhoneAccounts(true, "", null);
         } catch (SecurityException e) {
             // intended behavior
         }
@@ -442,11 +440,9 @@ public class TelecomServiceImplTest extends TelecomTestCase {
         makeAccountsVisibleToAllUsers(TEL_PA_HANDLE_16, SIP_PA_HANDLE_17);
 
         assertEquals(telPHList,
-                mTSIBinder.getPhoneAccountsSupportingScheme(
-                        "tel", DEFAULT_DIALER_PACKAGE).getList());
+                mTSIBinder.getPhoneAccountsSupportingScheme("tel", DEFAULT_DIALER_PACKAGE));
         assertEquals(sipPHList,
-                mTSIBinder.getPhoneAccountsSupportingScheme(
-                        "sip", DEFAULT_DIALER_PACKAGE).getList());
+                mTSIBinder.getPhoneAccountsSupportingScheme("sip", DEFAULT_DIALER_PACKAGE));
     }
 
     @SmallTest
@@ -462,7 +458,7 @@ public class TelecomServiceImplTest extends TelecomTestCase {
         makeAccountsVisibleToAllUsers(TEL_PA_HANDLE_16, SIP_PA_HANDLE_17);
         assertEquals(phoneAccountHandleList,
                 mTSIBinder.getPhoneAccountsForPackage(
-                        TEL_PA_HANDLE_16.getComponentName().getPackageName()).getList());
+                        TEL_PA_HANDLE_16.getComponentName().getPackageName()));
     }
 
     @SmallTest
@@ -491,7 +487,7 @@ public class TelecomServiceImplTest extends TelecomTestCase {
         when(mFakePhoneAccountRegistrar.getAllPhoneAccounts(any(UserHandle.class)))
                 .thenReturn(phoneAccountList);
 
-        assertEquals(2, mTSIBinder.getAllPhoneAccounts().getList().size());
+        assertEquals(2, mTSIBinder.getAllPhoneAccounts().size());
     }
 
     @SmallTest
